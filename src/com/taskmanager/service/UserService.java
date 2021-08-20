@@ -1,28 +1,33 @@
 package com.taskmanager.service;
 
 import com.taskmanager.domain.User;
+import com.taskmanager.persistence.UserRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class UserService {
+public class UserService  {
+
+    UserRepository userRepository ;
 
 
-    public void createUser(User newUser){
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-        for(User i : showAllUser()){
-            if(i.getUserName()==newUser.getUserName()){
+    public void createUser(User newUser) {
+
+        for (User i : showAllUser()) {
+            if (i.getUserName().equals(newUser.getUserName())) {
                 throw new RuntimeException("User nu este nu unic");
             }
 
         }
-
+        userRepository.saveUser(newUser);
 
     }
 
-    public List<User> showAllUser(){
+    public List<User> showAllUser() {
 
-
-        return new ArrayList<>();
+        return userRepository.findUsers();
     }
 }

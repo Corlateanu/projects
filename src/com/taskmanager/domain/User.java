@@ -10,6 +10,11 @@ public class User {
         this.lastName = lastName;
         this.userName = userName;
     }
+public String aranjare(){
+
+        return firstName + "," + lastName + "," + userName+ "\n";
+
+}
 
     public String getFirstName() {
         return firstName;

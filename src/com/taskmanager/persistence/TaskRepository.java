@@ -1,4 +1,4 @@
 package com.taskmanager.persistence;
 
-public class TaskRepository {
+public interface TaskRepository {
 }
